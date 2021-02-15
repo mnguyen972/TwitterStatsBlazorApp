@@ -1,0 +1,70 @@
+﻿@page "/stats"
+
+<h1>Stats</h1>
+
+@if (counters == null)
+{
+<p>Loading...</p>
+}
+else
+{
+<p>Elapsed Time: @counters.ElapsedTime</p>
+<p>Total Number of Tweets: @counters.TotalNumberOfTweets</p>
+<p>Average Tweets Per Hour: @counters.AverageTweetsPerHour</p>
+<p>Average Tweets Per Minute: @counters.AverageTweetsPerMinute</p>
+<p>Average Tweets Per Second: @counters.AverageTweetsPerSecond</p>
+<p>Percentage of Tweets with URL: @counters.PercentageOfTweetsWithUrl%</p>
+<p>Percentage of Tweets with Pic: @counters.PercentageOfTweetsWithPic%</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Top Hashtags</th>
+            <th>Total Tweets</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hashtag in @counters.TopHashtags)
+            {
+        <tr>
+            <td>@hashtag.Key</td>
+            <td>@hashtag.Value</td>
+        </tr>
+            }
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Top Domains</th>
+            <th>Total Tweets</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var domain in @counters.TopDomains)
+            {
+        <tr>
+            <td>@domain.Key</td>
+            <td>@domain.Value</td>
+        </tr>
+            }
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Top Emojis</th>
+            <th>Total Tweets</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emoji in @counters.TopEmojis)
+            {
+        <tr>
+            <td>@emoji.Key</td>
+            <td>@emoji.Value</td>
+        </tr>
+            }
+    </tbody>
+</table>
+
+}
